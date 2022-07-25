@@ -1,0 +1,71 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.24/"></script>
+</head>
+<body>
+  <table>
+    <tr>
+      <td style="width:300px"></td>
+  <td style="width:1400px; height:1000px"><div style="width:2400px; height:1000px" id="viewDiv"></div></td>
+    </tr></table>
+</body>
+
+
+  <script>
+
+    require([
+      "esri/config",
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/Graphic",
+      "esri/layers/GraphicsLayer"
+
+
+  ], function(esriConfig,Map, MapView,Graphic, GraphicsLayer ) {
+
+  esriConfig.apiKey = "AAPK4751ce41e4424711a51097cf374f24d9Cpvfau1PoHBoe04EGWjEQBBb8-ZQiZtVKpnAn1IUpkV3LSSgqKsbWN5t0gjgrjjY";
+
+    const map = new Map({
+      basemap: "arcgis-topographic"
+
+    });
+	
+	
+	
+	
+	        const view = new MapView({
+          map: map,
+          center: [-76.55845895,38.94574182],
+          zoom: 13, 
+          container: "viewDiv" // Div element
+        });
+
+  const graphicsLayer = new GraphicsLayer();
+map.add(graphicsLayer);
+  const simpleMarkerSymbol = {
+ 
+    type: "picture-marker",    url: "https://raw.githubusercontent.com/mapinguaro/icons/main/ESL_Wireless_Reg.png",    "width": "24px",           "height": "28px"  };
+
+
+  const pointGraphic = new Graphic({
+               geometry: { 
+                    type:'point',
+               longitude: -76.55845895,  
+               latitude: 38.94574182},
+                symbol: simpleMarkerSymbol,
+  
+  });
+  
+  
+
+
+  graphicsLayer.add(pointGraphic)
+
+
+
+});
+  </script>
+
+
+</html>
